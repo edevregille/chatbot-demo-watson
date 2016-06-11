@@ -1,0 +1,34 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+    {
+      "message":{
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"generic",
+            "elements":[
+              {
+                "title":"Welcome to Personal Assistant!",
+                "subtitle":"Hello, my name is Watson and I am here to make your life easier! ",
+                "buttons":[
+                  {
+                    "type":"web_url",
+                    "title":"View Website",
+                    "url":"http://limali.me"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"hi"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=<FACEBOOK_TOKEN>"
